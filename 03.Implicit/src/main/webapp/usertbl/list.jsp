@@ -18,6 +18,11 @@
 </head>
 <body>
 	<%@ include file="/include/header.jsp"%>
+	
+	
+	
+	
+	<a href="newpage" class="btn btn-info">추가화면</a>
 	<table class="table">
 		<thead class="thead">
 			<!-- 테이블 이름을 표시함 -->
@@ -33,8 +38,8 @@
 
 				<tr>
 					<th scope="row"><a href="detail?name=${dto.username}">${dto.username}</a></th>
-					<td>${dto.address}</td>
 					<td>${dto.birthyear}</td>
+					<td>${dto.address}</td>
 					<td>${dto.mobile}</td>
 				</tr>
 			</c:forEach>
