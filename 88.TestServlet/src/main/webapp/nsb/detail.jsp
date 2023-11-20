@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +8,6 @@
 </head>
 <body>
 	<%@ include file="/include/header.jsp"%>
-	<!-- 조회 화면 앞단 -->
 	<section class="page-section portfolio" id="portfolio">
 		<div class="container">
 			<h2
@@ -30,28 +28,30 @@
 			</div>
 		</div>
 	</section>
-
-	<!-- 조회 화면 테이블 -->
-	<table class="table">
-		<thead>
-			<tr>
-				<th scope="col">번호</th>
-				<th scope="col">이름</th>
-				<th scope="col">생년월일</th>
-				<th scope="col">혈액형</th>
-			</tr>
-		</thead>
-		<tbody>
-		<c:forEach items="${list}" var="dto">
-			<tr>
-				<th scope="row">${dto. boardnum}</th>
-				<td>${dto.username}</td>
-				<td>${dto.birthyear}</td>
-				<td>${dto.bload}</td>
-			</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+	boardnum, username, birthyear, bload
+	<form action="update" method="post">
+		<div class="form-group">
+			<label >번호</label> 
+			<input type="number" name="boardnum"  value="${dto.boardnum}" >
+		</div>
+		
+		<div class="form-group">
+			<label >이름</label> 
+			<input type="text"class="form-control" name="username" value="${dto.username }"> 
+		</div>
+		
+		<div class="form-group">
+			<label >생년월일</label> 
+			<input type="number"class="form-control" name="birthyear" value="${dto.birthyear }"> 
+		</div>
+		
+		<div class="form-group">
+			<label >혈액형</label> 
+			<input type="text"class="form-control" name="bload" value="${dto.bload }"> 
+		</div>
+		<input type="submit" class="btn btn-primary" value="수정하기">
+	</form>
+	
 	<%@ include file="/include/footer.jsp"%>
 </body>
 </html>
