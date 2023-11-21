@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/list.nsb")
+@WebServlet("*.nsb")
 public class NsbController extends HttpServlet {
 	
 	@Override
