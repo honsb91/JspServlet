@@ -1,9 +1,8 @@
 package mybatis;
 
 public class MybatisVO {
-	private String param1 , param2;
+	private String param1 , param2 ;
 	
-
 	public String getParam1() {
 		return param1;
 	}
@@ -19,6 +18,7 @@ public class MybatisVO {
 	public void setParam2(String param2) {
 		this.param2 = param2;
 	}
+	
 	
 	
 }

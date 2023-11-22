@@ -36,3 +36,16 @@
 -> maven 저장소에서 "JDBC" & "mybatis" 를 pom.xml에 넣어주기 ( mybatis는 OracleDriver(JDBC)를 이용해서 기능 동작)
 
 -My batis 공싱 문서의 설명서를 참고하여 환경 설정 ( maven repository 에서 maven 용으로 라이브러리 추가 )
+
+- 마이바티스 공식 문서에서 mybaits-config.xml을 가져와서 붙여넣기 ( 접속 정보 등 , Connection에 이용 될 내용 + sqlmapper의 경로 등)
+- driver , url , user등의 정보는 직접 입력
+- sqlmapper의 경로가 복잡한데 줄여서 패키지를 만들고 , xml 형태의 mapper 를 복사해서 붙여넣기 함
+- select 숫자 from dual를 통해 정확하게 select를 해오는지 테스트함 ( 환경 설정 테스트 )
+- mapper는 namerspace와 id로 쿼리를 식별함 . ex) "testmapper"."select1"
+- 가장 위에 있는 자바코드를 붙여넣기를 하고 import를 각각 해줌 ( = SqlSession이라는 작업을 만들어 내기 위함 ) 
+- 사용 주요 메소드
+- 데이터 한 건의 조회 => sqlSession."selectOne"("namespace.id", 필요하다면 파라메터 Object);
+- 데이터 여러 건의 조회 => sqlSession."selectList"("namespace.id", 필요하다면 파라메터 Objcet);
+- mpaaer 내부에서는 파라메터를 #{파라메터의 구분자} 또는 ${파라메터의 구분자}로 사용함.
+- #{파라메터이름} => 원본 데이터 타입을 유지시켜 String 경우 'Oracle' ※ jstl에 $와 mybatis $ , # 주의
+= ${파라메터이름} => 원본 데이터 타입이 아니라 글자 그대로 인식함. ( 컬럼 ) Oracle
