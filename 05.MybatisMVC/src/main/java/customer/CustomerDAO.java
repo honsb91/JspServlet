@@ -5,6 +5,10 @@ import java.util.List;
 import common.MybatisConnection;
 
 public class CustomerDAO extends MybatisConnection{
+	
+	public CustomerDAO() {
+		super(DataResource.HANUL);
+	}
 		
 	// 초기 데이터 베이스 연결 테스트 3을 조회하는 쿼리를 넣어두고 실행결과 3을 조회 후 결과로 가지고 오는지 TEST
 	public void test() {
