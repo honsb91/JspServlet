@@ -17,6 +17,7 @@
   </environments>
   <mappers>
     <mapper resource="mappers/cus-mapper.xml"/>
+    <mapper resource="mappers/sg-mapper.xml"/>
   </mappers>
 
 </configuration>
