@@ -3270,7 +3270,6 @@ fieldset:disabled .btn {
 .btn-lg,
 .btn-group-lg > .btn {
 	margin-bottom : 25px;
-	margin-left : 52rem;
   --bs-btn-padding-y: 0.5rem;
   --bs-btn-padding-x: 1rem;
   --bs-btn-border-radius: 0.5rem;

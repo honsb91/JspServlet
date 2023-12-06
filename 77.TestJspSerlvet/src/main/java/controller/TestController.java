@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("*.te")
 public class TestController extends HttpServlet {
-	
+
 	RequestDispatcher rd ; // 서블릿에서 다시 페이지로 요청을 넘길 때 사용 (Forward)
 
 	@Override
