@@ -35,7 +35,8 @@
 								</div>
 								<div class="form-outline form-white mb-4">
 									<input type="password" id="user_pw" name="user_pw"
-										class="form-control form-control-lg" placeholder="비밀번호 입력" />
+										class="form-control form-control-lg" placeholder="비밀번호 입력" 
+										onkeypress="if (event.keyCode==13) login()"/>
 									<label class="form-label" for="user_pw">Password</label>
 								</div>
 								<a class="btn btn-outline-light btn-lg px-5" onclick="login();">Login</a>
@@ -50,7 +51,7 @@
 						</div>
 						<div>
 							<p class="mb-0">
-								Don't have an account? <a href="#!"	class="text-white-50 fw-bold">Sign Up</a>
+								Don't have an account? <a href="joinpage.me"class="text-white-50 fw-bold">Sign Up</a>
 							</p>
 						</div>
 					</div>
@@ -73,25 +74,29 @@
  		// 비동기 방식 : 페이지를 새로 요청 x -> Controller 나 다른 API에 데이터만 따로 요청을 하는 형태 
  		// XMLHttpRequest 객체 , Http 객체 : 코드가 조금 복잡함
  		// Jquery : Ajax
- 		// type : method
+ 		// type : json..
+ 		// method : post
  		// url : 어디에 요청할껀지.
  		// data : 어떤것을 전송할껀지.
  		// success : 실행되는 펑션
  		// error : 실행되는 펑션
  		
  		$.ajax({
- 			type : 'post' , 
+ 			method : 'post' , 
  			url : 'login.me',
  			data : { user_id:$('#user_id').val() , user_pw:$('#user_pw').val()},
- 			success : function (response) {
-				console.log(response);
+ 			success : function (res) {
+ 				if (res == '1') {
+ 					location.href ='/mvc';
+				}else{
+					alert('로그인 실패');
+					$('#user_id').focus();
+				}
 			},
 			error : function (req , text) {
 				alert(req.status + ' 오류 ! 다시 로그인 시도를 해주세요!');
 			}
  		});
- 		
- 		
 	}
 
 </script>
