@@ -16,12 +16,15 @@
             <div class="card-body p-5">
               <h2 class="text-uppercase text-center mb-5">회원가입</h2>
 
-              <form>
+              <form action="join.me" method="post" autocomplete="off">
 
                 <div class="form-outline mb-4">
                   <input type="text" id="user_id" name ="user_id" class="form-control form-control-lg" />
                   <label class="form-label" for="user_id">아이디</label>
                 </div>
+                <div class="form-outline mb-4">
+                  <a id="check_id" class="btn btn-primary"> 아이디 중복확인 </a>
+                  </div>
                 <div class="form-outline mb-4">
                   <input type="password" id="user_pw" name="user_pw" class="form-control form-control-lg" />
                   <label class="form-label" for="user_pw">비밀번호</label>
@@ -49,7 +52,7 @@
                   <input type="text" id="post" name="post" class="form-control form-control-lg" />
                   <label class="form-label" for="post">주소2</label>
                 </div>
-                <a class="btn btn-success btn-lg mb-1">회원가입</a>
+                <a class="btn btn-success btn-lg mb-1" id="btn_join">회원가입</a>
               </form>
             </div>
           </div>
@@ -64,11 +67,45 @@
 	$('#btn_post').click(function () {
 		    new daum.Postcode({
 		        oncomplete: function(data) {
+		        	let address = data.userSelectedType =='R' ? data.roadAddress : data.jibunAddress;
+		        	
 		        	$('#address').val(data.address);
 		        	$('#post').val(data.zonecode);
 		        	
 		        }
 		    }).open();
+	});
+	
+	$('#btn_join').click(function () {
+		if(! $('#user_id').hasClass('checked') ) alert('아이디 중복확인을 하세요'); return;
+		
+		console.log('유효성 검사가 올바르게 진행되었는지??');
+		$('form').submit();
+	});
+	
+	$('#check_id').click(function () {
+		console.log($('#user_id').val());
+		let user_id = $('#user_id').val();
+		
+		if(user_id == ''){
+			alert('아이디를 입력해주세요!')
+			return;
+		}else if(user_id.length < 5){
+			alert('5글자 이상 입력해주세요.')
+			return;
+		}
+		
+		$.ajax({
+			url: 'idCheck.me',
+			data : {user_id : user_id}
+		success : function (res) {
+			
+			
+			
+		},error:function(req){
+			console.log(req.status);
+		}
+		});
 	});
 
 </script>
